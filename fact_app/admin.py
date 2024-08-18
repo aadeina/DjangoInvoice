@@ -12,7 +12,6 @@ class AdminCustomer(admin.ModelAdmin):
         return 'No Image'
     display_image.short_description = 'Image'
 
-admin.site.register(Customer, AdminCustomer)
 
 class AdminInvoice(admin.ModelAdmin):
     list_display = ('customer', 'save_by', 'invoice_date_time', 'total', 'last_updated_date', 'paid', 'invoice_type')    
