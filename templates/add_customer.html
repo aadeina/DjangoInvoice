@@ -1,0 +1,194 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<br><br><br><br>
+
+<h1 class="text-capitalize text-center mx-10 bg-dark text-white">Register a new customer</h1>
+
+<form method="post" onsubmit="return validateForm()">
+    {% csrf_token %}
+    <div class="form-row">
+        <div class="form-group col-md-5">
+            <label for="name">Name</label>
+            <input name="name" required type="text" class="form-control" id="name" placeholder="Customer first and last name">
+        </div>
+
+        <div class="form-group col-md-4">
+            <label for="email">Email</label>
+            <input name="email" required type="email" class="form-control" id="email" placeholder="Customer email">
+        </div>
+
+        <div class="form-group col-md-3">
+            <label for="phone">Phone :</label>
+            <span id="phoneLabel" class="badge" style="display: none; font-size: 0.875em; padding: 3px 6px; margin-left: 3px; color: white;"></span>
+            <input name="phone" required type="text" class="form-control" id="phone" placeholder="Customer phone number" oninput="updateLabel()" maxlength="8">
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="sex">Sex</label>
+            <select name="sex" class="form-control" required id="sex">
+                <option>Choose the gender ..</option>
+                <option value="M">Male</option>
+                <option value="F">Feminine</option>
+            </select>
+        </div>
+
+        <div class="form-group col-md-6">
+            <label for="age">Age</label>
+            <select name="age" class="form-control" required id="age">
+                <option>Choose the age range ..</option>
+                <option value="0-15">0-15</option>
+                <option value="15-25">15-25</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-12">
+            <label for="address">Address</label>
+            <input name="address" required type="text" class="form-control" id="address" placeholder="Customer address">
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="city">City</label>
+            <input name="city" type="text" class="form-control" id="city" placeholder="Customer city">
+        </div>
+
+        <div class="form-group col-md-6">
+            <label for="zip">Zip code</label>
+            <input name="zip" required type="text" class="form-control" id="zip" placeholder="Customer zip code required">
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
+
+<br><br><br>
+
+<script>
+    function updateLabel() {
+        const phoneInput = document.getElementById('phone');
+        const labelSpan = document.getElementById('phoneLabel');
+        const phoneValue = phoneInput.value;
+
+        labelSpan.style.display = 'none'; // Hide the span initially
+
+        if (phoneValue.startsWith('2')) {
+            labelSpan.textContent = 'Chinguittel';
+            labelSpan.style.backgroundColor = '#9e306e';
+            labelSpan.style.display = 'inline';
+        } else if (phoneValue.startsWith('4')) {
+            labelSpan.textContent = 'Mauritel';
+            labelSpan.style.backgroundColor = 'orange';
+            labelSpan.style.display = 'inline';
+        } else if (phoneValue.startsWith('3')) {
+            labelSpan.textContent = 'Mattel';
+            labelSpan.style.backgroundColor = '#143f6e';
+            labelSpan.style.display = 'inline';
+        } 
+        else if (phoneValue.startsWith('1')) {
+            labelSpan.textContent = 'number should start with 2, 3, or 4.';
+            labelSpan.style.backgroundColor = 'red';
+            labelSpan.style.color = 'white';
+            labelSpan.style.display = 'inline';
+        } 
+        else if (phoneValue.startsWith('5')) {
+            labelSpan.textContent = 'number should start with 2, 3, or 4.';
+            labelSpan.style.backgroundColor = 'red';
+            labelSpan.style.color = 'white';
+            labelSpan.style.display = 'inline';
+        } 
+        else if (phoneValue.startsWith('6')) {
+            labelSpan.textContent = 'number should start with 2, 3, or 4.';
+            labelSpan.style.backgroundColor = 'red';
+            labelSpan.style.color = 'white';
+            labelSpan.style.display = 'inline';
+        } 
+        else if (phoneValue.startsWith('7')) {
+            labelSpan.textContent = 'number should start with 2, 3, or 4.';
+            labelSpan.style.backgroundColor = 'red';
+            labelSpan.style.color = 'white';
+            labelSpan.style.display = 'inline';
+        } 
+        else if (phoneValue.startsWith('8')) {
+            labelSpan.textContent = 'number should start with 2, 3, or 4.';
+            labelSpan.style.backgroundColor = 'red';
+            labelSpan.style.color = 'white';
+            labelSpan.style.display = 'inline';
+        } 
+        else if (phoneValue.startsWith('9')) {
+            labelSpan.textContent = 'number should start with 2, 3, or 4.';
+            labelSpan.style.backgroundColor = 'red';
+            labelSpan.style.color = 'white';
+            labelSpan.style.display = 'inline';
+        } 
+        else if (phoneValue.startsWith('0')) {
+            labelSpan.textContent = 'number should start with 2, 3, or 4.';
+            labelSpan.style.backgroundColor = 'red';
+            labelSpan.style.color = 'white';
+            labelSpan.style.display = 'inline';
+        } 
+        else {
+            labelSpan.style.display = 'none'; // Hide the span if not matching
+        }
+    }
+
+        const phoneInput = document.getElementById('phone');
+        const labelSpan = document.getElementById('phoneLabel');
+        const phoneValue = phoneInput.value;
+
+        // Ensure phone value is treated as a string
+        const phoneString = phoneValue.toString();
+
+        labelSpan.style.display = 'none'; // Hide the span initially
+
+        if (phoneString.length === 8) {
+            if (phoneString.startsWith('2')) {
+                labelSpan.textContent = 'Chinguittel';
+                labelSpan.style.backgroundColor = '#9e306e';
+                labelSpan.style.display = 'inline';
+            } else if (phoneString.startsWith('4')) {
+                labelSpan.textContent = 'Mauritel';
+                labelSpan.style.backgroundColor = 'orange';
+                labelSpan.style.display = 'inline';
+            } else if (phoneString.startsWith('3')) {
+                labelSpan.textContent = 'Mattel';
+                labelSpan.style.backgroundColor = '#143f6e';
+                labelSpan.style.display = 'inline';
+            } else {
+                labelSpan.textContent = 'Number should start with 2, 3, or 4.';
+                labelSpan.style.backgroundColor = 'red';
+                labelSpan.style.color = 'white';
+                labelSpan.style.display = 'inline';
+            }
+        } else {
+            labelSpan.style.display = 'none'; // Hide the span if not matching
+        }
+    
+
+    function validateForm() {
+        const phoneInput = document.getElementById('phone');
+        const phoneValue = phoneInput.value;
+
+        // Check if phone number is exactly 8 digits long and starts with 2, 3, or 4
+        if (phoneValue.length !== 8 || !/^\d{8}$/.test(phoneValue) || !['2', '3', '4'].includes(phoneValue[0])) {
+            alert('The phone number must be exactly 8 digits long and start with 2, 3, or 4.');
+            return false;
+        }
+
+        return true;
+    }
+
+    // Attach the event listener for real-time feedback
+    document.getElementById('phone').addEventListener('input', updateLabel);
+
+    // Call updateLabel on page load to handle pre-filled values
+    window.addEventListener('load', updateLabel);
+</script>
+
+{% endblock content %}
