@@ -40,8 +40,9 @@
             <label for="age">Age</label>
             <select name="age" class="form-control" required id="age">
                 <option value="">Choose the age range ..</option>
-                <option value="0-15">0-15</option>
-                <option value="15-25">15-25</option>
+                <option value="0-20">0 - 20</option>
+                <option value="20-40">20 - 40</option>
+                <option value="40+">40+</option>
             </select>
         </div>
 
@@ -61,8 +62,23 @@
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="city">City</label>
-            <input name="city" type="text" class="form-control" id="city" placeholder="Customer city">
+            <select name="city" class="form-control" id="city" required>
+                <option value="">Choose a city ..</option>
+                <option value="Nouakchott">Nouakchott</option>
+                <option value="Nouadhibou">Nouadhibou</option>
+                <option value="Kiffa">Kiffa</option>
+                <option value="Rosso">Rosso</option>
+                <option value="Kaédi">Kaédi</option>
+                <option value="Tidjikja">Tidjikja</option>
+                <option value="Atar">Atar</option>
+                <option value="Zouérat">Zouérat</option>
+                <option value="Néma">Néma</option>
+                <option value="Sélibabi">Sélibabi</option>
+                <option value="Aleg">Aleg</option>
+                <!-- Add other cities as needed -->
+            </select>
         </div>
+        
 
         <div class="form-group col-md-6">
             <label for="zip">Zip code</label>

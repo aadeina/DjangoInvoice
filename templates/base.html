@@ -17,47 +17,55 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{% static 'style.css' %}">
     
+      <!-- jquery -->
+
+  <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
+  crossorigin="anonymous"></script>
+
     <title>Invoice System</title>
 </head>
 <body>
     <!-- Header -->
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="/"><i class="bi bi-receipt"></i> INVOICE SYSTEM</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                           <i class="bi bi-translate"></i> Languages
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#"><i class="bi bi-globe"></i> English</a>
-                            <a class="dropdown-item" href="#"><i class="bi bi-globe2"></i> French</a>
-                        </div>
-                    </li>
-                </ul>
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-                            <i class="bi bi-gear"></i> More Options
-                        </a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="{% url 'add-customer' %}"><i class="bi bi-person-plus"></i> Add Customer</a>
-                            <a class="dropdown-item" href="#"><i class="bi bi-person-badge"></i> Add Admin</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#"><i class="bi bi-graph-up"></i> Statistic</a>
-                        </div>
-                    </li>
-                </ul>
+            <div class="container" style="max-width: 80%;">
+                <a class="navbar-brand" href="/"><i class="bi bi-receipt"></i> INVOICE SYSTEM</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+    
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                               <i class="bi bi-translate"></i> Languages
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#"><i class="bi bi-globe"></i> English</a>
+                                <a class="dropdown-item" href="#"><i class="bi bi-globe2"></i> French</a>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-gear"></i> More Options
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="{% url 'add-customer' %}"><i class="bi bi-person-plus"></i> Add Customer</a>
+                                <a class="dropdown-item" href="#"><i class="bi bi-person-badge"></i> Add Admin</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#"><i class="bi bi-graph-up"></i> Statistic</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </nav>
     </header>
+    
     <div class="container">
         <div class="wrapper">
           <br>
