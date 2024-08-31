@@ -3,26 +3,34 @@ from django.views import View
 from .models import Article, Customer, Invoice
 from django.contrib import messages
 from django.db import transaction
+
+from .utils import pagination, get_invoice
 # Create your views here.
 
-class HomeView(View):
-    """Main view"""
+class HomeView( View):
+    """ Main view """
 
-    template_name = 'index.html'
+    templates_name = 'index.html'
 
-    def get(self, request, *args, **kwargs):
-        invoices = Invoice.objects.select_related('customer', 'save_by').all().order_by('-invoice_date_time')
-        context = {
-            'invoices': invoices
-        }
-        return render(request, self.template_name, context)
+    invoices = Invoice.objects.select_related('customer', 'save_by').all().order_by('-invoice_date_time')
+
+    context = {
+        'invoices': invoices
+    }
+
+    def get(self, request, *args, **kwags):
+
+        items = pagination(request, self.invoices)
+
+        self.context['invoices'] = items
+
+        return render(request, self.templates_name, self.context)
 
     def post(self, request, *args, **kwargs):
-        invoices = Invoice.objects.select_related('customer', 'save_by').all().order_by('-invoice_date_time')
-        context = {
-            'invoices': invoices
-        }
-        return render(request, self.template_name, context)
+        items = pagination(request, self.invoices)
+
+        self.context['invoices'] = items
+        return render(request, self.template_name, self.context)
 
 
 class AddCustomerView(View):
