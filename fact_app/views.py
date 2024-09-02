@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.views import View
 from .models import Article, Customer, Invoice
@@ -5,7 +6,9 @@ from django.contrib import messages
 from django.db import transaction
 from django.utils.translation import gettext as _
 from .utils import get_invoice, pagination
-
+import pdfkit
+import datetime
+from django.template.loader import get_template
 # Create your views here.
 
 class HomeView(View):
@@ -142,13 +145,39 @@ class InvoiceVisualizationView(View):
 
         pk = kwargs.get('pk')
 
-        obj = Invoice.objects.get(pk=pk)
-
-        articles = obj.article_set.all()
-
-        context = {
-            'obj': obj,
-            'articles': articles
-        }
+        context = get_invoice(pk)
 
         return render(request, self.template_name, context)
+
+
+
+def get_invoice_pdf(request, *args, **kwargs):
+    """Generate PDF file from HTML file."""
+
+    pk = kwargs.get('pk')
+    context = get_invoice(pk)
+    context['date'] = datetime.datetime.today()
+
+    # Get the HTML file
+    template = get_template('invoice-pdf.html')
+    html = template.render(context)
+
+    # Specify the path to wkhtmltopdf
+    path_to_wkhtmltopdf = r'C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe'
+    config = pdfkit.configuration(wkhtmltopdf=path_to_wkhtmltopdf)
+
+    # Options for PDF format
+    options = {
+        'page-size': 'Letter',
+        'encoding': 'UTF-8',
+        'enable-local-file-access': True  # This should be set to True to enable local file access
+    }
+
+    # Generate PDF
+    try:
+        pdf = pdfkit.from_string(html, False, configuration=config, options=options)
+        response = HttpResponse(pdf, content_type='application/pdf')
+        response['Content-Disposition'] = 'attachment; filename="invoice.pdf"'
+        return response
+    except IOError as e:
+        return HttpResponse(f"Error generating PDF: {e}", status=500)
