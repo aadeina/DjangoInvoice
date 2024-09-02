@@ -9,7 +9,7 @@ class Customer(models.Model):
     """
     SEX_TYPES = (
         ('M', _('Male')),
-        ('F', _('Feminine')),
+        ('F', _('Female')),  # Changed 'Feminine' to 'Female' for consistency
     )
 
     # Define the regex validator for the phone number
@@ -101,5 +101,5 @@ class Article(models.Model):
 
     @property
     def get_total(self):
-        total = self.quantity * self.unit_price
-        return total
+        # Ensure total is computed correctly if it's not set manually
+        return self.quantity * self.unit_price
