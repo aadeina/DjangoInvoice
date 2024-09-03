@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views import View
-from .models import * 
+from .models import *
 from django.contrib import messages
 
 from django.http import HttpResponse
@@ -11,7 +11,6 @@ import datetime
 
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-
 
 from django.template.loader import get_template
 
@@ -45,7 +44,7 @@ class HomeView(LoginRequiredSuperuserMixim, View):
                 obj.save()
                 messages.success(request, _("Change made successfully."))
             except Exception as e:
-                messages.error(request, f"Sorry, the following error has occurred: {e}.")
+                messages.error(request, _("Sorry, the following error has occurred: {}.").format(e))
         
         # Delete an invoice
         if request.POST.get('id_supprimer'):
@@ -54,7 +53,7 @@ class HomeView(LoginRequiredSuperuserMixim, View):
                 obj.delete()
                 messages.success(request, _("The deletion was successful."))
             except Exception as e:
-                messages.error(request, f"Sorry, the following error has occurred: {e}.")
+                messages.error(request, _("Sorry, the following error has occurred: {}.").format(e))
 
         invoices = Invoice.objects.select_related('customer', 'save_by').all().order_by('-invoice_date_time')
         items = pagination(request, invoices)
@@ -80,20 +79,17 @@ class AddCustomerView(LoginRequiredSuperuserMixim, View):
             'age': request.POST.get('age'),
             'city': request.POST.get('city'),
             'zip_code': request.POST.get('zip'),
-             # Ensure this is a User instance if applicable to your design
             'save_by': request.user if request.user.is_authenticated else None
-            #'save_by': request.user  # Ensure this is a User instance
         }
-        # Include the image file in the data dictionary
         image = request.FILES.get('image')
         if image:
             data['image'] = image
 
         try:
             Customer.objects.create(**data)
-            messages.success(request, "Customer registered successfully.")
+            messages.success(request, _("Customer registered successfully."))
         except Exception as e:
-            messages.error(request, f"Sorry, our system detected the following issue: {e}.")
+            messages.error(request, _("Sorry, our system detected the following issue: {}.").format(e))
 
         return render(request, self.template_name)
 
@@ -123,7 +119,7 @@ class AddInvoiceView(LoginRequiredSuperuserMixim, View):
 
             invoice_object = {
                 'customer_id': customer_id,
-                'save_by': request.user,  # Ensure request.user is a User instance
+                'save_by': request.user,
                 'total': total,
                 'invoice_type': invoice_type,
                 'comments': comment
@@ -142,9 +138,9 @@ class AddInvoiceView(LoginRequiredSuperuserMixim, View):
                 items.append(data)
 
             Article.objects.bulk_create(items)
-            messages.success(request, "Data saved successfully.")
+            messages.success(request, _("Data saved successfully."))
         except Exception as e:
-            messages.error(request, f"Sorry, the following error has occurred: {e}.")
+            messages.error(request, _("Sorry, the following error has occurred: {}.").format(e))
 
         return render(request, self.template_name)
 
@@ -193,4 +189,4 @@ def get_invoice_pdf(request, *args, **kwargs):
         response['Content-Disposition'] = 'attachment; filename="invoice.pdf"'
         return response
     except IOError as e:
-        return HttpResponse(f"Error generating PDF: {e}", status=500)
+        return HttpResponse(_("Error generating PDF: {}").format(e), status=500)
