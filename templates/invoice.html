@@ -6,14 +6,14 @@
 
 <div class="container">
     <div class="row gutters">
-        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        <div class="col-12">
             <div class="card">
                 <div class="card-body p-0">
                     <div class="invoice-container">
                         <div class="invoice-header">
                             <!-- Row start -->
                             <div class="row gutters">
-                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                                <div class="col-12">
                                     <div class="custom-actions-btns mb-5">
                                         <a href="{% url 'invoice-pdf' pk=obj.pk %}" class="btn btn-primary">
                                             <i class="icon-download"></i> Télécharger
@@ -28,13 +28,13 @@
 
                             <!-- Row start -->
                             <div class="row gutters">
-                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                                <div class="col-md-6">
                                     <a href="#" class="invoice-logo">
                                         Syskat Technologies
                                     </a>
                                 </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6">
-                                    <address class="text-right">
+                                <div class="col-md-6 text-right">
+                                    <address>
                                         Syskat Inc, 45 NorthWest<br>
                                         Nouakchott, Mauritanie<br>
                                         00000 00000
@@ -45,7 +45,7 @@
 
                             <!-- Row start -->
                             <div class="row gutters">
-                                <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+                                <div class="col-md-9">
                                     <div class="invoice-details">
                                         <address>
                                             {{ obj.customer.name }}<br>
@@ -53,7 +53,7 @@
                                         </address>
                                     </div>
                                 </div>
-                                <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+                                <div class="col-md-3 text-right">
                                     <div class="invoice-details">
                                         <div class="invoice-num">
                                             <div>{{ obj.get_invoice_type_display }} - #00{{ obj.id }}</div>
@@ -67,10 +67,9 @@
                         </div>
 
                         <div class="invoice-body">
-
                             <!-- Row start -->
                             <div class="row gutters">
-                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                <div class="col-12">
                                     <div class="table-responsive">
                                         <table class="table custom-table m-0">
                                             <thead>
@@ -114,9 +113,9 @@
                                                     <td>
                                                         PAYÉ :
                                                         {% if obj.paid %}
-                                                            <img class="icon" src="{% static 'images/icon-yes.svg' %}" alt="Vrai">
+                                                            <img class="icon" src="{% static 'images/icon-yes.svg' %}" alt="Oui">
                                                         {% else %}
-                                                            <img class="icon" src="{% static 'images/icon-no.svg' %}" alt="Faux">
+                                                            <img class="icon" src="{% static 'images/icon-no.svg' %}" alt="Non">
                                                         {% endif %}
                                                     </td>
                                                 </tr>
