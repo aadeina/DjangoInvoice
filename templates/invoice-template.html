@@ -16,10 +16,10 @@
                                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                                     <div class="custom-actions-btns mb-5">
                                         <a href="" class="btn btn-primary">
-                                            <i class="icon-download"></i> Download
+                                            <i class="icon-download"></i> Télécharger
                                         </a>
                                         <a href="#" class="btn btn-secondary">
-                                            <i class="icon-printer"></i> Print
+                                            <i class="icon-printer"></i> Imprimer
                                         </a>
                                     </div>
                                 </div>
@@ -29,14 +29,14 @@
                             <!-- Row start -->
                             <div class="row gutters">
                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
-                                    <a href="donaldprogrammeur.com" class="invoice-logo">
-                                        Donald Programmer
+                                    <a href="syskattechnologies.com" class="invoice-logo">
+                                        Syskat Technologies
                                     </a>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                     <address class="text-right">
-                                        Donald Programmer Inc, 45 NorthWest<br>
-                                        Cameroon, Douala<br>
+                                        Syskat Technologies Inc, 45 NorthWest<br>
+                                        Cameroun, Douala<br>
                                         00000 00000
                                     </address>
                                 </div>
@@ -49,7 +49,7 @@
                                     <div class="invoice-details">
                                         <address>
                                             {{ obj.customer.name }}<br>
-                                            {{ obj.customer.address }}, {{ obj.customer.city }}, Cameroon
+                                            {{ obj.customer.address }}, {{ obj.customer.city }}, Cameroun
                                         </address>
                                     </div>
                                 </div>
@@ -59,7 +59,7 @@
                                             <div>{{ obj.get_invoice_type_display }} - #00{{ obj.id }}</div>
                                             <div>{{ obj.invoice_date_time }}</div>
                                         </div>
-                                    </div>													
+                                    </div>													 
                                 </div>
                             </div>
                             <!-- Row end -->
@@ -73,11 +73,11 @@
                                         <table class="table custom-table m-0">
                                             <thead>
                                                 <tr>
-                                                    <th>Items</th>
-                                                    <th>Product ID</th>
-                                                    <th>Quantities</th>
-                                                    <th>Unit Price</th>
-                                                    <th>Subtotal</th>
+                                                    <th>Articles</th>
+                                                    <th>ID du produit</th>
+                                                    <th>Quantités</th>
+                                                    <th>Prix unitaire</th>
+                                                    <th>Sous-total</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -91,29 +91,29 @@
                                                 </tr>
                                                 {% endfor %} 
                                                 <tr>
-                                                    <td>Comment: {{ obj.comments }}</td>
+                                                    <td>Commentaire: {{ obj.comments }}</td>
                                                     <td colspan="2">
                                                         <p>
-                                                            Subtotal<br>
-                                                            Shipment &amp; Handling<br>
-                                                            Tax<br>
+                                                            Sous-total<br>
+                                                            Expédition &amp; Manipulation<br>
+                                                            Taxe<br>
                                                         </p>
                                                         <h5 class="text-success"><strong>Total</strong></h5>
                                                     </td>			
                                                     <td>
                                                         <p>
-                                                            {{ obj.get_total }} FCFA<br>
-                                                            00.00 FCFA<br>
-                                                            00.00 FCFA<br>
+                                                            {{ obj.get_total }} MRO<br>
+                                                            00.00 MRO<br>
+                                                            00.00 MRO<br>
                                                         </p>
-                                                        <h5 class="text-success"><strong>${{ obj.get_total }} FCFA</strong></h5>
+                                                        <h5 class="text-success"><strong>{{ obj.get_total }} MRO</strong></h5>
                                                     </td>
                                                     <td> 
-                                                        PAID:                    
+                                                        PAYÉ:                    
                                                         {% if obj.paid %}
-                                                            <img class="icon" src="{% static 'images/icon-yes.svg' %}" alt="True">
+                                                            <img class="icon" src="{% static 'images/icon-yes.svg' %}" alt="Oui">
                                                         {% else %}
-                                                            <img class="icon" src="{% static 'images/icon-no.svg' %}" alt="False">
+                                                            <img class="icon" src="{% static 'images/icon-no.svg' %}" alt="Non">
                                                         {% endif %}
                                                     </td>
                                                 </tr>
@@ -126,7 +126,7 @@
                         </div>
 
                         <div class="invoice-footer">
-                            Thank you for your purchase.
+                            Merci pour votre achat.
                         </div>
 
                     </div>

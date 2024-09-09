@@ -3,9 +3,9 @@
 {% block content %}
 <br><br><br><br>
 
-<h1 class="text-capitalize text-center mx-10 bg-dark text-white"> Register a new invoice </h1>
+<h1 class="text-capitalize text-center mx-10 bg-success text-white"> Enregistrer Une Nouvelle Facture </h1>
 
-<form method="post">
+<form method="post" style="color: black;">
 
     {% csrf_token %}
 
@@ -83,8 +83,13 @@
 
 <div class="row">
 
-    <button id="btn-add" class="btn btn-outline-danger w-50 col-md-6"> Add a new item line </button>
-    <button id="btn-remove" class="btn btn-outline-warning w-50 col-md-6"> Remove last item line </button>
+    
+        <button id="btn-add" class="btn btn-outline-danger col-md-5 btn-sm">Add a new item line</button>
+        <div class="mx-2"></div> <!-- This adds a gap between the buttons -->
+        <div class="my-2"></div> <!-- This adds a gap between the buttons -->
+        <button id="btn-remove" class="btn btn-outline-warning col-md-5 btn-sm">Remove last item line</button>
+    
+    
 
 </div>
 

@@ -3,8 +3,8 @@ body {
   padding: 0;
 
   font: 400 0.875rem "Open Sans", sans-serif;
-  color: #bcd0f7;
-  background: #1a233a;
+  /* color: #bcd0f7; */
+  background: #eee;
   position: relative;
   height: 100%;
   font-family: "Roboto", sans-serif;
@@ -100,7 +100,7 @@ body {
   border: 1px solid #2b3958;
 }
 .custom-table thead {
-  background: #2f71c1;
+  background: #00a55f; /* Updated background color */
 }
 .custom-table thead th {
   border: 0;
@@ -117,8 +117,8 @@ body {
 }
 
 .table {
-  background: #1a243a;
-  color: #bcd0f7;
+  background: #ffffff;
+  color: #000000;
   font-size: 0.75rem;
 }
 .text-success {

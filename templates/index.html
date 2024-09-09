@@ -6,9 +6,35 @@
 
 {% block content %}
 <br><br>
+<style>
+    .custom-btn {
+  color: #212529; /* Text color */
+  background-color: #ffc107; /* Background color */
+  border-color: #ffc107; /* Border color */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
+}
 
+.custom-btn:hover {
+  background-color: #e0a800; /* Darker background on hover */
+  color: #fff; /* Text color on hover */
+  position: relative;
+  overflow: hidden;
+}
+
+.custom-btn:hover::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.1); /* Overlay color */
+  transition: background 0.3s;
+}
+
+</style>
 <div class="row">
-    <a href="{% url 'add-invoice' %}" class="btn col-md-4 btn-primary">
+    <a href="{% url 'add-invoice' %}" class="btn col-md-4 custom-btn">
         {% trans 'Register a new invoice' %} <span class="badge text-bg-secondary"></span>
     </a>
 
@@ -16,10 +42,11 @@
         <span class="badge text-bg-secondary"></span>
     </a>
 
-    <a href="{% url 'add-customer' %}" class="btn col-md-4 btn-primary">
+    <a href="{% url 'add-customer' %}" class="btn col-md-4 custom-btn">
         {% trans 'Register a new customer' %} <span class="badge text-bg-secondary"></span>
     </a>
 </div>
+
 
 <br><br>
 
@@ -28,9 +55,9 @@
 </div>
 
 <div>
-    <table class="table table-striped-columns">
-        <thead>
-            <tr>
+    <table class="table table-striped-columns ">
+        <thead style="background-color: #4b69e7; color: #ffffff; ">
+            <tr style="border-top-left-radius: 10px; border-top-right-radius: 10px;">
                 <th scope="col">#</th>
                 <th scope="col">{% trans 'CUSTOMER NAME' %}</th>
                 <th scope="col">{% trans 'DATE' %}</th>
@@ -40,14 +67,17 @@
                 <th scope="col">{% trans 'ACTION' %}</th>
             </tr>
         </thead>
-        <tbody id="myTable">
+        
+        <tbody id="myTable" style="  background: #ffffff;
+        color: #000000;
+        font-size: 0.75rem;">
             {% if invoices %}
                 {% for facture in invoices %}
                     <tr>
                         <th scope="row">{{ facture.pk }}</th>
                         <td>{{facture.customer.name}}</td>
                         <td>{{facture.invoice_date_time}}</td>
-                        <td>{{ facture.get_total }}</td>
+                        <td>{{ facture.get_total }} MRO</td>
                         <td>
                             {% if facture.paid %}
                                 <img src="{% static 'images/icon-yes.svg' %}" alt="{% trans 'True' %}">

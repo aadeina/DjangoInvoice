@@ -16,10 +16,10 @@
                                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                                     <div class="custom-actions-btns mb-5">
                                         <a href="{% url 'invoice-pdf' pk=obj.pk %}" class="btn btn-primary">
-                                            <i class="icon-download"></i> Download
+                                            <i class="icon-download"></i> Télécharger
                                         </a>
                                         <a href="#" class="btn btn-secondary">
-                                            <i class="icon-printer"></i> Print
+                                            <i class="icon-printer"></i> Imprimer
                                         </a>
                                     </div>
                                 </div>
@@ -36,7 +36,7 @@
                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                     <address class="text-right">
                                         Syskat Inc, 45 NorthWest<br>
-                                        Mauritania, Nouakchott<br>
+                                        Nouakchott, Mauritanie<br>
                                         00000 00000
                                     </address>
                                 </div>
@@ -49,7 +49,7 @@
                                     <div class="invoice-details">
                                         <address>
                                             {{ obj.customer.name }}<br>
-                                            {{ obj.customer.address }}, {{ obj.customer.city }}, Mauritania
+                                            {{ obj.customer.address }}, {{ obj.customer.city }}, Mauritanie
                                         </address>
                                     </div>
                                 </div>
@@ -75,11 +75,11 @@
                                         <table class="table custom-table m-0">
                                             <thead>
                                                 <tr>
-                                                    <th>Items</th>
-                                                    <th>Product ID</th>
-                                                    <th>Quantities</th>
-                                                    <th>Unit Price</th>
-                                                    <th>Subtotal</th>
+                                                    <th>Articles</th>
+                                                    <th>ID Produit</th>
+                                                    <th>Quantités</th>
+                                                    <th>Prix Unitaire</th>
+                                                    <th>Sous-total</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -94,29 +94,29 @@
                                                 {% endfor %}
                                                 
                                                 <tr>
-                                                    <td>Comment: {{ obj.comments }}</td>
+                                                    <td>Commentaire : {{ obj.comments }}</td>
                                                     <td colspan="2">
                                                         <p>
-                                                            Subtotal<br>
-                                                            Shipment &amp; Handling<br>
-                                                            Tax<br>
+                                                            Sous-total<br>
+                                                            Expédition &amp; Manutention<br>
+                                                            Taxe<br>
                                                         </p>
-                                                        <h5 class="text-success"><strong>Total</strong></h5>
+                                                        <h5 class="text-dark"><strong>Total</strong></h5>
                                                     </td>
                                                     <td>
                                                         <p>
-                                                            {{ obj.get_total }} FCFA<br>
-                                                            00.00 FCFA<br>
-                                                            00.00 FCFA<br>
+                                                            {{ obj.get_total }} MRO<br>
+                                                            00.00 MRO<br>
+                                                            00.00 MRO<br>
                                                         </p>
-                                                        <h5 class="text-success"><strong>${{ obj.get_total }} FCFA</strong></h5>
+                                                        <h5 class="text-dark"><strong>{{ obj.get_total }} MRO</strong></h5>
                                                     </td>
                                                     <td>
-                                                        PAID:
+                                                        PAYÉ :
                                                         {% if obj.paid %}
-                                                            <img class="icon" src="{% static 'images/icon-yes.svg' %}" alt="True">
+                                                            <img class="icon" src="{% static 'images/icon-yes.svg' %}" alt="Vrai">
                                                         {% else %}
-                                                            <img class="icon" src="{% static 'images/icon-no.svg' %}" alt="False">
+                                                            <img class="icon" src="{% static 'images/icon-no.svg' %}" alt="Faux">
                                                         {% endif %}
                                                     </td>
                                                 </tr>
@@ -130,7 +130,7 @@
                         </div>
 
                         <div class="invoice-footer">
-                            Thank you for your purchase.
+                            Merci pour votre achat.
                         </div>
 
                     </div>

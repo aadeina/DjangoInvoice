@@ -2,7 +2,6 @@ from django.contrib import admin
 from .models import * 
 from django.utils.translation import gettext_lazy as _
 from django.utils.html import format_html
-
 class AdminCustomer(admin.ModelAdmin):
     list_display = ('name', 'email', 'phone', 'address', 'sex', 'age', 'city', 'zip_code', 'display_image')
 
@@ -20,6 +19,6 @@ admin.site.register(Customer, AdminCustomer)
 admin.site.register(Invoice, AdminInvoice)
 admin.site.register(Article)
 
-admin.site.site_title = _("Amar INVOICE SYSTEM")
-admin.site.site_header = _("Amar INVOICE SYSTEM")
-admin.site.index_title = _("Amar INVOICE SYSTEM")
+admin.site.site_title = _("Gestion de facturation")
+admin.site.site_header = _("Gestion de facturation")
+admin.site.index_title = _("Gestion de facturation")
