@@ -67,7 +67,7 @@ class Invoice(models.Model):
     total = models.DecimalField(max_digits=10, decimal_places=2)
     last_updated_date = models.DateTimeField(null=True, blank=True)
     paid = models.BooleanField(default=False)
-    invoice_type = models.CharField(max_length=1, choices=INVOICE_TYPE)
+    invoice_type = models.CharField(max_length=1, choices=INVOICE_TYPE, blank=True, null=True)
     comments = models.TextField(null=True, max_length=1000, blank=True)
     image = models.ImageField(upload_to='invoice_images/', blank=True, null=True)
 

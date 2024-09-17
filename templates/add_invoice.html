@@ -11,9 +11,9 @@
 
     <div class="form-row">
         <div class="form-group col-md-12">
-            <label for="customer"> Customer </label>
+            <label for="customer"> Client </label>
             <select name="customer" class="form-control" id="customer">
-                <option> Choose the customer ... </option>
+                <option> Choisissez le client ... </option>
                 {% for customer in customers %}
                 <option value="{{customer.id}}">{{forloop.counter}}-{{customer.name}}</option>
                 {% endfor %}
@@ -23,12 +23,12 @@
 
     <div class="form-row">
         <div class="form-group col-md-12">
-            <label for="invoice"> Invoice Type </label>
+            <label for="invoice"> Type de Facture </label>
             <select name="invoice_type" class="form-control" id="invoice">
-                <option> Choose the invoice type ... </option>
-                <option value="R">RECEIPT</option>
-                <option value="P">PROFORMA INVOICE</option>
-                <option value="I">INVOICE</option>
+                <option> Choisissez le type de facture ... </option>
+                <option value="REÇU">REÇU</option>
+                <option value="FACTURE PROFORMA">FACTURE PROFORMA</option>
+                <option value="FACTURE">FACTURE</option>
             </select>
         </div>
     </div>
@@ -37,17 +37,17 @@
 
         <div class="form-row">
             <div class="form-group col-md-4">
-                <label for="article-1">#1 Item name </label>
+                <label for="article-1">#1 Nom de l'article </label>
                 <input required name="article" type="text" class="form-control" id="article-1">
             </div>
 
             <div class="form-group col-md-2">
-                <label for="qty-1"> Quantity </label>
+                <label for="qty-1"> Quantité </label>
                 <input required name="qty" type="number" min="1" step="0.1" class="form-control" id="qty-1">
             </div>
 
             <div class="form-group col-md-3">
-                <label for="unit-1"> Unit Price </label>
+                <label for="unit-1"> Prix Unitaire </label>
                 <input required name="unit" type="number" min="1" step="0.1" onchange="handleChangeSingleArticle(this.id)" class="form-control" id="unit-1">
             </div>
 
@@ -70,12 +70,12 @@
 
     <div class="form-row">
         <div class="form-group col-md-12">
-            <label for="comment"> Comments </label>
+            <label for="comment"> Commentaires </label>
             <textarea class="form-control" name="comment" id="comment" cols="30" rows="1"></textarea>
         </div>
     </div>
 
-    <button type="submit" class="btn btn-primary"> Save </button>
+    <button type="submit" class="btn btn-primary"> Enregistrer </button>
 
 </form>
 
@@ -83,13 +83,10 @@
 
 <div class="row">
 
-    
-        <button id="btn-add" class="btn btn-outline-danger col-md-5 btn-sm">Add a new item line</button>
-        <div class="mx-2"></div> <!-- This adds a gap between the buttons -->
-        <div class="my-2"></div> <!-- This adds a gap between the buttons -->
-        <button id="btn-remove" class="btn btn-outline-warning col-md-5 btn-sm">Remove last item line</button>
-    
-    
+        <button id="btn-add" class="btn btn-outline-danger col-md-5 btn-sm">Ajouter une nouvelle ligne d'article</button>
+        <div class="mx-2"></div> <!-- Ajoute un écart entre les boutons -->
+        <div class="my-2"></div> <!-- Ajoute un écart entre les boutons -->
+        <button id="btn-remove" class="btn btn-outline-warning col-md-5 btn-sm">Supprimer la dernière ligne d'article</button>
 
 </div>
 
